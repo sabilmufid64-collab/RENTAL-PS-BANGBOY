@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental PS Bang Boy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: #0b0f19;
+            border-bottom: 1px solid #1f293d;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffffff;
+        }
+
+        .btn-wa-header {
+            background-color: transparent;
+            border: 1px solid #0084ff;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .btn-wa-header:hover {
+            background-color: #0084ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 80px 5%;
+            background: linear-gradient(rgba(11, 15, 25, 0.8), rgba(11, 15, 25, 0.9)), url('https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=1400&auto=format&fit=crop') no-repeat center center/cover;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-subtitle {
+            color: #0084ff;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .hero-title span {
+            color: #0084ff;
+        }
+
+        .hero-desc {
+            color: #a0aec0;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+
+        .hero-features div {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0084ff, #00c6ff);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 132, 255, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 5%;
+            text-align: center;
+            background-color: #070913;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: #a0aec0;
+            margin-bottom: 50px;
+            font-size: 0.95rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background-color: #111827;
+            border: 1px solid #1f293d;
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            transition: transform 0.3s, border-color 0.3s;
+            text-align: center;
+        }
+
+        .pricing-card.vip {
+            border-color: #f59e0b;
+        }
+
+        .pricing-card.vip::before {
+            content: "VIP";
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #f59e0b;
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0084ff;
+            margin-bottom: 15px;
+        }
+
+        .pricing-card.vip .price {
+            color: #f59e0b;
+        }
+
+        .duration {
+            color: #a0aec0;
+            font-size: 0.85rem;
+        }
+
+        /* Why Us Section */
+        .why-us {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .feature-box {
+            background-color: #111827;
+            border: 1px solid #1f293d;
+            padding: 30px 20px;
+            border-radius: 12px;
+            transition: background 0.3s;
+        }
+
+        .feature-box:hover {
+            background-color: #162032;
+        }
+
+        .feature-box h4 {
+            font-size: 0.95rem;
+            margin-top: 15px;
+            color: #e2e8f0;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 80px 5%;
+            background-color: #070913;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid #1f293d;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Location Section */
+        .location {
+            padding: 80px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .location-info {
+            max-width: 400px;
+        }
+
+        .location-info h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .location-info p {
+            color: #a0aec0;
+            margin-bottom: 20px;
+        }
+
+        .map-box {
+            flex: 1;
+            min-width: 300px;
+            height: 250px;
+            background-color: #111827;
+            border: 1px solid #1f293d;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 30px 5%;
+            background-color: #05070c;
+            border-top: 1px solid #1f293d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: #a0aec0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">🎮 RENTAL PS BANG BOY</div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Beranda</a></li>
+            <li><a href="#harga">Harga</a></li>
+            <li><a href="#fasilitas">Fasilitas</a></li>
+            <li><a href="#galeri">Galeri</a></li>
+            <li><a href="#lokasi">Lokasi</a></li>
+        </ul>
+        <a href="https://wa.me/6282163655280" target="_blank" class="btn-wa-header">
+            📞 0821 6365 5280
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-subtitle">PLAYSTATION RENTAL</div>
+            <h1 class="hero-title">RENTAL PS <br><span>BANG BOY</span></h1>
+            <p class="hero-desc">Main lebih seru, bareng teman, di tempat yang nyaman!</p>
+            <div class="hero-features">
+                <div>⚡ Konsol Original</div>
+                <div>🔒 Aman & Terpercaya</div>
+                <div>🚀 Internet Stabil</div>
+                <div>🛋️ Ruang Nyaman</div>
+            </div>
+            <a href="https://wa.me/6282163655280" target="_blank" class="btn-primary">
+                💬 BOOKING SEKARANG
+            </a>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="harga" class="pricing">
+        <h2 class="section-title">HARGA RENTAL</h2>
+        <p class="section-subtitle">Harga sudah termasuk akses game bebas dan fasilitas lengkap.</p>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>PS5</h3>
+                <div class="price">Rp25.000</div>
+                <div class="duration">⏱️ 1 Jam</div>
+            </div>
+            <div class="pricing-card">
+                <h3>PS4</h3>
+                <div class="price">Rp15.000</div>
+                <div class="duration">⏱️ 1 Jam</div>
+            </div>
+            <div class="pricing-card vip">
+                <h3>PS5 VIP</h3>
+                <div class="price">Rp30.000</div>
+                <div class="duration">⏱️ 1 Jam</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="fasilitas" class="why-us">
+        <h2 class="section-title">KENAPA PILIH RENTAL PS BANG BOY?</h2>
+        <p class="section-subtitle">Kenyamanan dan kualitas gaming nomor satu untuk Anda.</p>
+        
+        <div class="features-grid">
+            <div class="feature-box">
+                <div style="font-size: 2rem;">🎮</div>
+                <h4>Konsol Original & Terawat</h4>
+            </div>
+            <div class="feature-box">
+                <div style="font-size: 2rem;">📶</div>
+                <h4>Internet Cepat & Stabil</h4>
+            </div>
+            <div class="feature-box">
+                <div style="font-size: 2rem;">🛋️</div>
+                <h4>Ruang Nyaman & Bersih</h4>
+            </div>
+            <div class="feature-box">
+                <div style="font-size: 2rem;">👥</div>
+                <h4>Bisa Main Bareng Teman</h4>
+            </div>
+            <div class="feature-box">
+                <div style="font-size: 2rem;">🛡️</div>
+                <h4>Pelayanan Ramah & Profesional</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="galeri" class="gallery">
+        <h2 class="section-title">GALERI</h2>
+        <p class="section-subtitle">Suasana tempat kami, nyaman dan siap menemani waktu bermain kamu!</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600&auto=format&fit=crop" alt="Rental PS 1"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=600&auto=format&fit=crop" alt="Rental PS 2"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop" alt="Rental PS 3"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop" alt="Rental PS 4"></div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="lokasi" class="location">
+        <div class="location-info">
+            <h2>Jalan Bintang No. 199</h2>
+            <p>Mudah diakses, lokasi strategis, parkir aman.</p>
+            <a href="https://maps.google.com" target="_blank" class="btn-primary" style="font-size: 0.9rem; padding: 10px 20px;">
+                📍 Lihat di Google Maps
+            </a>
+        </div>
+        <div class="map-box">
+            <span>[Peta Lokasi Google Maps]</span>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div>© 2026 Rental PS Bang Boy. All rights reserved.</div>
+        <div>Main Bareng, Lupa Waktu!</div>
+        <div>📞 0821 6365 5280 | 📍 Jalan Bintang No. 199</div>
+    </footer>
+
+</body>
+</html>
